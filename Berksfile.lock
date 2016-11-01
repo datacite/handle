@@ -1,7 +1,7 @@
 DEPENDENCIES
   handle
     git: git@github.com:datacite/handle-cookbook.git
-    revision: 8ffa2718aeecac06b1f607dbd9e83819b96453e3
+    revision: 127c38d44d000a266a869744f78b9e7e0989d542
 
 GRAPH
   apt (5.0.0)
@@ -11,7 +11,7 @@ GRAPH
     mingw (>= 1.1)
     seven_zip (>= 0.0.0)
   compat_resource (12.16.1)
-  handle (1.0.0)
+  handle (1.0.1)
     apt (>= 0.0.0)
     java (~> 1.42.0)
   homebrew (2.1.2)
