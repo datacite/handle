@@ -54,7 +54,37 @@ Vagrant.configure("2") do |config|
 
   # Enable provisioning with chef solo
   config.vm.provision :chef_solo do |chef|
-    chef.json = {}
+    chef.json = { 'handle' =>
+      { 'dir' => '/vagrant',
+        'sql_host' => ENV['HANDLE_HOST'],
+        'servers' => [
+          { 'name' => ENV['HANDLE_NAME_1'],
+            'this_server_id' => ENV['HANDLE_SERVER_ID_1'],
+            'port' => ENV['HANDLE_PORT_1'],
+            'http_port' => ENV['HANDLE_HTTP_PORT_1'],
+            'log_save_directory' => ENV['HANDLE_LOG_DIR_1'],
+            'sql_db' => ENV['HANDLE_DB_1'],
+            'sql_login' => ENV['HANDLE_LOGIN_1'],
+            'sql_passwd' => ENV['HANDLE_PASSWORD_1'],
+            'server_admins' => ENV['HANDLE_SERVER_ADMINS_1'],
+            'replication_authentication' => ENV['HANDLE_REPLICATION_AUTHENTICATION_1'],
+            'replication_sites_handle' => ENV['HANDLE_REPLICATION_SITES_HANDLE_1']
+          },
+          { 'name' => ENV['HANDLE_NAME_2'],
+            'this_server_id' => ENV['HANDLE_SERVER_ID_2'],
+            'port' => ENV['HANDLE_PORT_2'],
+            'http_port' => ENV['HANDLE_HTTP_PORT_2'],
+            'log_save_directory' => ENV['HANDLE_LOG_DIR_2'],
+            'sql_db' => ENV['HANDLE_DB_2'],
+            'sql_login' => ENV['HANDLE_LOGIN_2'],
+            'sql_passwd' => ENV['HANDLE_PASSWORD_2'],
+            'server_admins' => ENV['HANDLE_SERVER_ADMINS_2'],
+            'replication_authentication' => ENV['HANDLE_REPLICATION_AUTHENTICATION_2'],
+            'replication_sites_handle' => ENV['HANDLE_REPLICATION_SITES_HANDLE_2']
+          }
+        ]
+      }
+    }
     chef.custom_config_path = "Vagrantfile.chef"
     chef.cookbooks_path = "vendor/cookbooks"
     dna = JSON.parse(File.read(File.expand_path("../node.json", __FILE__)))

@@ -58,3 +58,7 @@ ssl/*
 !ssl/rapidssl.crt
 
 *.pem
+
+hsj-*
+handle-*
+srv_*
